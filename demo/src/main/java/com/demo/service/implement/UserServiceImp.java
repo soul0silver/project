@@ -24,11 +24,16 @@ public class UserServiceImp extends BaseRespon implements UserService {
     UserRepo userRepo;
     @Autowired
     PasswordEncoder encoder;
+
     @Override
     public UserDTO findByUsername(String username) {
-        Map<String,Object> map=userRepo.findUsername(username);
-        ObjectMapper objectMapper=new ObjectMapper();
-        return objectMapper.convertValue(map,UserDTO.class) ;
+        UserDTO userDTO = new UserDTO(
+                userRepo.findUsername(username).getUsername(),
+                userRepo.findUsername(username).getPassword(),
+                userRepo.findUsername(username).getEmail(),
+                userRepo.findRoles(username)
+                );
+        return userDTO;
     }
 
     @Override
@@ -43,10 +48,11 @@ public class UserServiceImp extends BaseRespon implements UserService {
 
     @Override
     @Transactional
-    public void save(User user,int rid) {
+    public void save(User user, int[] rid) {
 
         userRepo.save(new User(user.getUsername(), encoder.encode(user.getPassword()), user.getEmail()));
-        userRepo.userRole(userRepo.findByEmail(user.getEmail()).getUid(),rid);
+        for (int i : rid)
+            userRepo.userRole(userRepo.findByEmail(user.getEmail()).getUid(), i);
     }
 
     @Override

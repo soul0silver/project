@@ -38,18 +38,22 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     }
 
     @Override
-    public ResponseEntity<?> findByPrice(double price) {
-        return getResponEntity(productRepo.findAllByPrice(price));
+    public ResponseEntity<?> findByPrice(double price,int page,String sort) {
+        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
+        return getResponEntity(productRepo.findAllByPrice(price,pageable));
     }
 
     @Override
-    public ResponseEntity<?> findByCid(int cid) {
-         return getResponEntity(productRepo.findAllByCid(cid));
+    public ResponseEntity<?> findByCid(int cid,int page,String sort) {
+        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
+
+        return getResponEntity(productRepo.findAllByCid(cid,pageable));
     }
 
     @Override
-    public ResponseEntity<?> findByStatus(int status) {
-        return getResponEntity(productRepo.findAllByStatus(status));
+    public ResponseEntity<?> findByStatus(int status,int page,String sort) {
+        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
+        return getResponEntity(productRepo.findAllByStatus(status,pageable));
     }
 
     @Override
@@ -58,4 +62,5 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
         Page pages=productRepo.findAll(pageable);
         return getResponEntity(pages);
     }
+
 }

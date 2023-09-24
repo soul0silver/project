@@ -10,16 +10,15 @@ import java.util.Set;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class UserDTO {
     private long uid;
     private String username;
     private String password;
     private String email;
-    private String rname;
+    private List<String> rname;
 
-    public UserDTO(String username, String password, String email, String rname) {
+    public UserDTO(String username, String password, String email, List<String> rname) {
         this.username = username;
         this.password = password;
         this.email = email;

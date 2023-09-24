@@ -17,11 +17,16 @@ import java.util.Optional;
 @Repository
 public interface UserRepo extends CrudRepository<User,Integer> {
 
-    @Query(value = "select u.*,r.rname from user_role us," +
+    @Query(value = "select u.* from user_role us," +
                     "user u, " +
                     "role r " +
                     "where us.uid=u.uid and r.rid=us.rid and u.username=:username",nativeQuery = true)
-    Map<String,Object> findUsername(@Param("username") String username);
+    User findUsername(@Param("username") String username);
+    @Query(value = "select r.rname from user_role us," +
+            "user u, " +
+            "role r " +
+            "where us.uid=u.uid and r.rid=us.rid and u.username=:username",nativeQuery = true)
+    List<String> findRoles(@Param("username") String username);
     Boolean existsByUsername(String username);
     Boolean existsByEmail(String email);
     @Modifying

@@ -18,9 +18,12 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Map<String,Object> map=userRepo.findUsername(username);
-        ObjectMapper objectMapper=new ObjectMapper();
-        UserDTO userDTO= objectMapper.convertValue(map,UserDTO.class);
+        UserDTO userDTO = new UserDTO(
+                userRepo.findUsername(username).getUsername(),
+                userRepo.findUsername(username).getPassword(),
+                userRepo.findUsername(username).getEmail(),
+                userRepo.findRoles(username)
+        );
         if (userRepo.existsByUsername(username)==false) throw new UsernameNotFoundException("user not found");
         return UserPrinciple.build(userDTO);
     }

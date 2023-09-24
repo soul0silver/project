@@ -20,7 +20,7 @@ import java.util.Date;
 @Entity(name = "employee")
 public class Employee{
     @Id
-    private int id;
+    private int eid;
     private String firstname;
     private String lastname;
     private String identification;
@@ -28,8 +28,9 @@ public class Employee{
     @JsonFormat(pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
     private Date birthday;
-    private int aid;
+    private String email;
     private String phone;
     private int store;
     private String avatar;
+    private int status;
 }
