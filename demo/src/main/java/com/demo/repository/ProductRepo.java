@@ -26,12 +26,15 @@ public interface ProductRepo extends JpaRepository<Product,Integer> {
             "p.cpu," +
             "p.rom,p.version,p.rcamera,p.battery, p.charge," +
             "p.screen,p.resolution,p.widescreen,p.scanfrequency,p.brightness," +
-            "p.gpu,p.fcamera,p.os,p.card,c.color  from product p," +
+            "p.gpu,p.fcamera,p.os,p.card,c.color,q.quan  from product p," +
             "color c,brand b,product_color pc," +
-            " brand_product bp, category c1 " +
+            " brand_product bp, category c1, (select pid,sum(quantity) quan from  stock group by pid) as q\n" +
+            "where p.pid=q.pid " +
             "where p.pid=pc.pid" +
             "and pc.cid=c.id" +
             "and p.pid=bp.bid" +
-            "and bp.bid=b.id", nativeQuery = true)
+            "and bp.bid=b.id" +
+            "and ", nativeQuery = true)
     List<Map<String,Object>>getAll(Pageable pageable);
+
 }

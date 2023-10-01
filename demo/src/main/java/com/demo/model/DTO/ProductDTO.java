@@ -35,4 +35,5 @@ public class ProductDTO {
     private String cpu;
     private String gpu;
     private String color;
+    private int quan;
 }
