@@ -50,7 +50,7 @@ public class UserServiceImp extends BaseRespon implements UserService {
     @Transactional
     public void save(User user, int[] rid) {
 
-        userRepo.save(new User(user.getUsername(), encoder.encode(user.getPassword()), user.getEmail()));
+        userRepo.save(new User(user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(), user.getEid()));
         for (int i : rid)
             userRepo.userRole(userRepo.findByEmail(user.getEmail()).getUid(), i);
     }

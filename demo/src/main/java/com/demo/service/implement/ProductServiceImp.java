@@ -26,7 +26,7 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     @Override
     public ResponseEntity<?> delete(Product p) {
         Product product=productRepo.findById(p.getPid()).get();
-        product.setStatus(3);
+
         productRepo.save(product);
         return getResponEntity(product);
     }
@@ -50,11 +50,7 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
         return getResponEntity(productRepo.findAllByCid(cid,pageable));
     }
 
-    @Override
-    public ResponseEntity<?> findByStatus(int status,int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        return getResponEntity(productRepo.findAllByStatus(status,pageable));
-    }
+    
 
     @Override
     public ResponseEntity<?> getListProductPage(int page, String propSortName) {

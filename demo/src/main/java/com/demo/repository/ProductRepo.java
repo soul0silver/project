@@ -19,5 +19,5 @@ public interface ProductRepo extends JpaRepository<Product,Integer> {
     Product findByPname(String pname);
     Page<Product> findAllByPrice(double price, Pageable pageable);
     Page<Product> findAllByCid(int cid, Pageable pageable);
-    Page<Product> findAllByStatus(int status, Pageable pageable);
+
 }
