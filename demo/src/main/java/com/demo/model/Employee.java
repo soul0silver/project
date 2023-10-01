@@ -33,4 +33,5 @@ public class Employee{
     private int store;
     private String avatar;
     private int status;
+    private int aid;
 }

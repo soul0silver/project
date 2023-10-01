@@ -1,4 +1,4 @@
-package com.demo.model;
+package com.demo.model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,12 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class SignForm {
+@AllArgsConstructor
+public class LoginForm {
     private String username;
     private String password;
-    private String email;
-    private int eid;
-    private int[] rid;
 }

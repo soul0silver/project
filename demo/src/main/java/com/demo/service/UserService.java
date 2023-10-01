@@ -1,12 +1,7 @@
 package com.demo.service;
 
 import com.demo.model.User;
-import com.demo.model.UserDTO;
-import com.demo.password.PasswordResetRequest;
-import org.springframework.http.ResponseEntity;
-
-import java.util.List;
-import java.util.Optional;
+import com.demo.model.DTO.UserDTO;
 
 public interface UserService {
     UserDTO findByUsername(String username);

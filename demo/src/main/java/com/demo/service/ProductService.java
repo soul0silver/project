@@ -1,7 +1,10 @@
 package com.demo.service;
 
+import com.demo.model.DTO.ProductDTO;
 import com.demo.model.Product;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface ProductService {
     ResponseEntity<?> save(Product p);
@@ -9,6 +12,6 @@ public interface ProductService {
     ResponseEntity<?> findByPname(String pname);
     ResponseEntity<?> findByPrice(double price,int page, String sort);
     ResponseEntity<?> findByCid(int cid,int page, String sort);
-
+    ResponseEntity<?> receipt(List<ProductDTO> list);
     public ResponseEntity<?> getListProductPage(int page, String propSortName);
 }

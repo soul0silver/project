@@ -1,27 +1,22 @@
-package com.demo.model;
+package com.demo.model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
-@Entity(name = "product")
-public class Product {
-    @Id
+@AllArgsConstructor
+public class ProductDTO {
     private int pid;
     private String pname;
     private String image;
-    private int cid;
+    private String category;
     private String desc;
     private float price;
-    private int brand;
+    private String brand;
     private int ram;
     private int rom;
     private int version;
@@ -39,4 +34,5 @@ public class Product {
     private int card;
     private String cpu;
     private String gpu;
+    private String color;
 }

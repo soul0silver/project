@@ -1,24 +1,18 @@
 package com.demo.controller;
 
 import com.demo.Principle.UserPrinciple;
-import com.demo.baserespon.BaseRespon;
 import com.demo.baserespon.JwtResponse;
 import com.demo.baserespon.MyRespon;
 import com.demo.config.JwtProvider;
-import com.demo.model.LoginForm;
-import com.demo.model.SignForm;
+import com.demo.model.DTO.LoginForm;
+import com.demo.model.DTO.SignForm;
 import com.demo.model.User;
-import com.demo.model.UserDTO;
 import com.demo.password.IPasswordResetService;
 import com.demo.password.PasswordResetRequest;
-import com.demo.password.PasswordResetToken;
 import com.demo.service.implement.RoleServiceImp;
 import com.demo.service.implement.UserServiceImp;
 
-import org.hibernate.internal.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -32,9 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.nio.file.attribute.UserPrincipal;
 import java.util.Random;
-import java.util.UUID;
 
 
 @RestController

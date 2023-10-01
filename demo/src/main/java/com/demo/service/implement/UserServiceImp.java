@@ -2,21 +2,15 @@ package com.demo.service.implement;
 
 import com.demo.baserespon.BaseRespon;
 import com.demo.model.User;
-import com.demo.model.UserDTO;
-import com.demo.password.PasswordResetRequest;
+import com.demo.model.DTO.UserDTO;
 import com.demo.repository.UserRepo;
 
 import com.demo.service.UserService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class UserServiceImp extends BaseRespon implements UserService {

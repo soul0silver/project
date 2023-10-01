@@ -1,4 +1,4 @@
-package com.demo.model;
+package com.demo.model.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
