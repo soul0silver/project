@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/css/main.818a881d.css",
+    "main.js": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/js/main.a747a090.js",
+    "static/media/nucleo-outline.eot": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/media/nucleo-outline.56814a6b7240045e1494.eot",
+    "static/media/nucleo-outline.ttf": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/media/nucleo-outline.1102ed9b2d16dccdec05.ttf",
+    "static/media/nucleo-outline.woff": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/media/nucleo-outline.1a1036e643f97457ec5f.woff",
+    "static/media/nucleo-outline.woff2": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/media/nucleo-outline.802141dd0dcc63b21cbb.woff2",
+    "static/media/logo-white.svg": "//soul0silver.github.io/project/now-ui-dashboard-react-main/static/media/logo-white.6a2b2982a8cdf50bd26935af1bc19b05.svg",
+    "index.html": "//soul0silver.github.io/project/now-ui-dashboard-react-main/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.818a881d.css",
+    "static/js/main.a747a090.js"
+  ]
+}
