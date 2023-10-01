@@ -19,8 +19,26 @@ public class Product {
     private String pname;
     private String image;
     private int cid;
-    private int status;
     private String desc;
     private float price;
-    private int quantity;
+    private int brand;
+    private int origin;
+    private int color;
+    private int ram;
+    private int rom;
+    private int version;
+    private String rcamera;
+    private int battery;
+    private double charge;
+    private int screen;
+    private int fcamera;
+    private String resolution;
+    private double widescreen;
+    private int scanfrequency;
+    private int brightness;
+    private String glass;
+    private String os;
+    private int card;
+    private String cpu;
+    private String gpu;
 }

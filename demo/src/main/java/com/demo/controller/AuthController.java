@@ -67,7 +67,7 @@ public class AuthController {
             myRespon.setMessage("The email is already used! Try again!");
             return new ResponseEntity<>(myRespon.getMessage(), HttpStatus.OK);
         }
-        User user = new User(signForm.getUsername(), signForm.getPassword(), signForm.getEmail());
+        User user = new User(signForm.getUsername(), signForm.getPassword(), signForm.getEmail(),signForm.getEid());
         userServiceImp.save(user, signForm.getRid());
         myRespon.setMessage("create user success");
         return new ResponseEntity<>(myRespon.getMessage(), HttpStatus.OK);
