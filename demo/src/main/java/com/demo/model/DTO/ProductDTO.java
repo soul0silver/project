@@ -36,4 +36,5 @@ public class ProductDTO {
     private String gpu;
     private String color;
     private int quan;
+
 }

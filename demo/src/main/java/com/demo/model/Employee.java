@@ -34,4 +34,5 @@ public class Employee{
     private String avatar;
     private int status;
     private int aid;
+    private double salary;
 }

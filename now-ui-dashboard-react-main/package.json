@@ -3,10 +3,11 @@
   "version": "1.5.2",
   "main": "dist/index.js",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/data",
+  "homepage": "https://https://soul0silver.github.io/project",
   "dependencies": {
     "bootstrap": "4.6.2",
     "chart.js": "3.9.1",
+    "gh-pages": "^6.0.0",
     "mdb-react-ui-kit": "^6.3.0",
     "mdb-ui-kit": "^6.4.1",
     "perfect-scrollbar": "1.5.5",
@@ -26,6 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "compile-sass": "sass src/assets/scss/paper-dashboard.scss src/assets/css/paper-dashboard.css",
     "minify-sass": "sass src/assets/scss/paper-dashboard.scss src/assets/css/paper-dashboard.min.css --style compressed"

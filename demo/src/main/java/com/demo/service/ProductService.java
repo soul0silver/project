@@ -12,6 +12,6 @@ public interface ProductService {
     ResponseEntity<?> findByPname(String pname);
     ResponseEntity<?> findByPrice(double price,int page, String sort);
     ResponseEntity<?> findByCid(int cid,int page, String sort);
-    ResponseEntity<?> receipt(List<ProductDTO> list);
+    ResponseEntity<?> receipt(List<ProductDTO> list,int store);
     public ResponseEntity<?> getListProductPage(int page, String propSortName);
 }

@@ -13,7 +13,6 @@ public class BaseRespon {
     protected ResponseEntity<?> getResponEntity(Object data) {
         return ResponseEntity.ok(data);
     }
-
     private MyRespon getRespon(Object data) {
         MyRespon myRespon = new MyRespon();
         myRespon.setStatus(200);

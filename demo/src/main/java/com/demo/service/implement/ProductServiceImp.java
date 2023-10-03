@@ -57,7 +57,10 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     }
 
     @Override
-    public ResponseEntity<?> receipt(List<ProductDTO> list) {
+    public ResponseEntity<?> receipt(List<ProductDTO> list,int store) {
+        for(ProductDTO p:list){
+            productRepo.receipt(p.getPid(),p.getQuan(),store);
+        }
         return null;
     }
 
