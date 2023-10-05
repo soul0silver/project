@@ -31,6 +31,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping(value = "/auth")
+@CrossOrigin("*")
 public class AuthController {
 
     @Autowired
