@@ -28,6 +28,7 @@ import {
   Input,
   Row,
   Col,
+  CardGroup,
 } from "reactstrap";
 
 // core components
@@ -47,16 +48,13 @@ function User() {
               <CardBody>
                 <Form>
                   <Row>
-                    <Col className="pr-1" md="5">
-                      <FormGroup>
-                        <label>Company (disabled)</label>
-                        <Input
-                          defaultValue="Creative Code Inc."
-                          disabled
-                          placeholder="Company"
-                          type="text"
-                        />
-                      </FormGroup>
+                  <Col className="pl-1" md="4">
+                      <Card>
+                        <CardBody>
+                        <img src={""} alt="" />
+                        <input type="file" />
+                        </CardBody>
+                      </Card>
                     </Col>
                     <Col className="px-1" md="3">
                       <FormGroup>

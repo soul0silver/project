@@ -15,12 +15,12 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useContext } from "react";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
 // reactstrap components
-import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation, redirect } from "react-router-dom";
 
 // core components
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
@@ -30,10 +30,13 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 import Login from "views/Login";
+import { Appcontext } from "context/Appcontext";
+
 
 var ps;
 
 function Admin(props) {
+
   const location = useLocation();
   const [backgroundColor, setBackgroundColor] = React.useState("blue");
   const mainPanel = React.useRef();
@@ -57,37 +60,37 @@ function Admin(props) {
   const handleColorClick = (color) => {
     setBackgroundColor(color);
   };
-  return (
-    <div className="wrapper">
-      <Sidebar {...props} routes={routes} backgroundColor={backgroundColor} />
-      <div className="main-panel" ref={mainPanel}>
-        <DemoNavbar {...props} />
-        <Routes>
-          {routes.map((prop, key) => {
-            return (
-              <Route
-                path={prop.path}
-                element={prop.component}
-                key={key}
-                exact
-              />
-            );
-          })}
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/admin"
-            element={<Navigate to="/admin/dashboard" replace />}
-          />
+  
+    return (
+    
+      <div className="wrapper">
+        <Sidebar {...props} routes={routes} backgroundColor={backgroundColor} />
+        <div className="main-panel" ref={mainPanel}>         
+          <DemoNavbar {...props} />
+          <Routes>
+            {routes.map((prop, key) => {
+              return (
+                <Route
+                  path={prop.path}
+                  element={prop.component}
+                  key={key}
+                  exact
+                />
+              );
+            })}
           
-        </Routes>
-        <Footer fluid />
+          
+          </Routes>
+          <Footer fluid />
+        </div>
+        <FixedPlugin
+          bgColor={backgroundColor}
+          handleColorClick={handleColorClick}
+        />
       </div>
-      <FixedPlugin
-        bgColor={backgroundColor}
-        handleColorClick={handleColorClick}
-      />
-    </div>
-  );
+    );
+  
+
 }
 
 export default Admin;

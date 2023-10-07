@@ -31,14 +31,14 @@ var dashRoutes = [
     name: "Dashboard",
     icon: "fas fa-columns",
     component: <Dashboard />,
-    layout: "/admin",
+    layout: "/main",
   },
   {
     path: "/products",
     name: "products",
     icon: "fas fa-list",
     component: <Icons />,
-    layout: "/admin",
+    layout: "/main",
   },
   
   {
@@ -46,28 +46,28 @@ var dashRoutes = [
     name: "Notifications",
     icon: "fas fa-bell",
     component: <Notifications />,
-    layout: "/admin",
+    layout: "/main",
   },
   {
     path: "/user-page",
     name: "My account",
     icon: "fas fa-user-cog",
     component: <UserPage />,
-    layout: "/admin",
+    layout: "/main",
   },
   {
     path: "/employees",
     name: "employees",
     icon: "fas fa-users",
     component: <TableList />,
-    layout: "/admin",
+    layout: "/main",
   },
   {
     path: "/typography",
     name: "Typography",
     icon: "design-2_ruler-pencil",
     component: <Move />,
-    layout: "/admin",
+    layout: "/main",
   }
   
 ];

@@ -73,7 +73,8 @@
 }
 .login_page{
   margin-top: 80px;
-
+  border: 1px solid black;
+  box-shadow:  0 0 3px 3px rgba(35, 34, 34, 0.14);
   padding: 20px;
   border-radius: 8px;
   width: 50%;
