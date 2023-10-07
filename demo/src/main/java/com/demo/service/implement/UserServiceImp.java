@@ -27,6 +27,7 @@ public class UserServiceImp extends BaseRespon implements UserService {
                 userRepo.findUsername(username).getEmail(),
                 userRepo.findRoles(username)
                 );
+
         return userDTO;
     }
 

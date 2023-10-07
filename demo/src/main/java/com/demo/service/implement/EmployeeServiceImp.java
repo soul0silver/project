@@ -25,9 +25,8 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
     @Override
     public ResponseEntity<?> findByName(String firstname, String lastname,int page,String sort) {
         Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        String body="list: "+employeeRepo.findByName(firstname,lastname,pageable)+", totalPage: "+employeeRepo.findByName(firstname,lastname,pageable).getTotalPages();
 
-        return getResponEntity(body);
+        return getResponEntity(employeeRepo.findByName(firstname,lastname,pageable));
     }
 
     @Override
@@ -36,13 +35,13 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
 
         Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
         Page<Employee> list= employeeRepo.findAllByLastnameOrFirstname(lastname,firstname,pageable);
-        String body="list: "+list+", totalPage: "+employeeRepo.findAllByLastnameOrFirstname(lastname,firstname,pageable).getTotalPages();
-        return getResponEntity(body);
+
+        return getResponEntity(list);
     }
 
     @Override
     public ResponseEntity<?> findEmployeeByPhone(String phone) {
-        return getResponEntity(employeeRepo.findEmployeeByPhoneContains(phone));
+        return getResponEntity(employeeRepo.findEmployeeByPhoneStartsWith(phone));
     }
 
     @Override
@@ -65,8 +64,6 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
     @Override
     public ResponseEntity<?> getAll(int page,String sort) {
         Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        String body="list: "+employeeRepo.findAll(pageable)+", totalPage: "+employeeRepo.findAll(pageable).getTotalPages();
-
         return getResponEntity(employeeRepo.findAll(pageable));
     }
 

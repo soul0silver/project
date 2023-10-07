@@ -19,7 +19,7 @@ public interface EmployeeRepo extends PagingAndSortingRepository<Employee,Intege
             nativeQuery = true)
     Page<Employee> findByName(@Param("firstname") String firstname,@Param("lastname") String lastname, Pageable pageable);
     Page<Employee> findAllByLastnameOrFirstname(String lastname,String firstname,Pageable pageable);
-    Employee findEmployeeByPhoneContains(String phone);
+    Employee findEmployeeByPhoneStartsWith(String phone);
     Page<Employee> findEmployeeByStore(int store,Pageable pageable);
     Page<Employee> findAllByBirthday(Date birthday,Pageable pageable);
     Employee findEmployeeByIdentification(String identification);
