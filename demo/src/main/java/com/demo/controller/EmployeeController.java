@@ -26,4 +26,11 @@ public class EmployeeController {
 
         return employeeServiceImp.save(employee);
     }
+    @GetMapping(value = "/by-name")
+    ResponseEntity<?> getByName(@RequestParam("page") int page,
+                                @RequestParam("sort") String sort,
+                                @RequestParam("lastname") String lastname,
+                                @RequestParam("firstname") String firstname){
+       return employeeServiceImp.findAllByLastnameOrFirstname(lastname,firstname,page,sort);
+    }
 }

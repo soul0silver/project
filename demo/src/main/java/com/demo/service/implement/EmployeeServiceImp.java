@@ -34,7 +34,7 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
             ,int page,String sort) {
 
         Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        Page<Employee> list= employeeRepo.findAllByLastnameOrFirstname(lastname,firstname,pageable);
+        Page<Employee> list= employeeRepo.findAllByLastnameOrFirstnameContains(lastname,firstname,pageable);
 
         return getResponEntity(list);
     }
@@ -58,7 +58,7 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
 
     @Override
     public ResponseEntity<?> findEmployeeByIdentification(String identification) {
-        return getResponEntity(employeeRepo.findEmployeeByIdentification(identification));
+        return getResponEntity(employeeRepo.findEmployeeByIdentificationContains(identification));
     }
 
     @Override
