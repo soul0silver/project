@@ -25,7 +25,7 @@ public class Employee{
     private String lastname;
     private String identification;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date birthday;
     private String email;
