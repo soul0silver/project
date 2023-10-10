@@ -2,19 +2,31 @@ package com.demo.service;
 
 import com.demo.model.Employee;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
 
 public interface EmployeeService {
-    ResponseEntity<?> findByName(String firstname, String lastname, int page, String sort);
-    ResponseEntity<?> findAllByLastnameOrFirstname(String lastname,String firstname,int page,String sort);
-    ResponseEntity<?>findEmployeeByPhone(String phone);
-    ResponseEntity<?> findEmployeeByStore(int store,int page,String sort);
-    ResponseEntity<?> findAllByBirthday(Date birthday,int page,String sort);
-    ResponseEntity<?> findEmployeeByIdentification(String identification);
+    ResponseEntity<?> findAllBy(String firstname,
+                                String lastname,
+                                String identification,
+                                String phone,
+                                String email,
+                                int aidf,
+                                int aidl,
+                                double salf,
+                                double sall,
+                                int storef,
+                                int storel,
+                                int yf,
+                                int yl,
+                                int mf,
+                                int ml,
+                                int df,
+                                int dl,
+                                int page,String sort);
     ResponseEntity<?> getAll(int page,String sort);
     ResponseEntity<?> delete(Employee employee);
     ResponseEntity<?> save(Employee employee);
-    ResponseEntity<?> findAllByEmailContains(String email,int page,String sort);
 }

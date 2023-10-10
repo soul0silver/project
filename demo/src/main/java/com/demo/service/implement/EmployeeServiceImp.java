@@ -23,53 +23,49 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
     EmployeeRepo employeeRepo;
 
     @Override
-    public ResponseEntity<?> findByName(String firstname, String lastname,int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
+    public ResponseEntity<?> findAllBy(String firstname, String lastname, String identification, String phone, String email, int aidf,
+                                       int aidl,
+                                       double salf,
+                                       double sall,
+                                       int storef,
+                                       int storel,
+                                       int yf,
+                                       int yl,
+                                       int mf,
+                                       int ml,
+                                       int df,
+                                       int dl, int page, String sort) {
+        Pageable pageable = PageRequest.of(page, 20, Sort.by(Sort.Direction.ASC, sort));
 
-        return getResponEntity(employeeRepo.findByName(firstname,lastname,pageable));
+        return getResponEntity(employeeRepo.findEmpBy(
+                firstname,
+                lastname,
+                identification,
+                phone,
+                email,
+                aidf,
+                aidl,
+                salf,
+                sall,
+                storef,
+                storel,
+                yf,
+                yl,
+                mf,
+                ml,
+                df,
+                dl, pageable));
     }
 
     @Override
-    public ResponseEntity<?> findAllByLastnameOrFirstname(String lastname, String firstname
-            ,int page,String sort) {
-
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        Page<Employee> list= employeeRepo.findAllByLastnameOrFirstnameContains(lastname,firstname,pageable);
-
-        return getResponEntity(list);
-    }
-
-    @Override
-    public ResponseEntity<?> findEmployeeByPhone(String phone) {
-        return getResponEntity(employeeRepo.findEmployeeByPhoneStartsWith(phone));
-    }
-
-    @Override
-    public ResponseEntity<?> findEmployeeByStore(int store,int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        return getResponEntity(employeeRepo.findEmployeeByStore(store,pageable));
-    }
-
-    @Override
-    public ResponseEntity<?> findAllByBirthday(Date birthday,int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        return getResponEntity(employeeRepo.findAllByBirthday(birthday,pageable));
-    }
-
-    @Override
-    public ResponseEntity<?> findEmployeeByIdentification(String identification) {
-        return getResponEntity(employeeRepo.findEmployeeByIdentificationContains(identification));
-    }
-
-    @Override
-    public ResponseEntity<?> getAll(int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
+    public ResponseEntity<?> getAll(int page, String sort) {
+        Pageable pageable = PageRequest.of(page, 20, Sort.by(Sort.Direction.ASC, sort));
         return getResponEntity(employeeRepo.findAll(pageable));
     }
 
     @Override
     public ResponseEntity<?> delete(Employee employee) {
-        Employee e=employeeRepo.findById(employee.getEid()).get();
+        Employee e = employeeRepo.findById(employee.getEid()).get();
         e.setStatus(0);
         return getResponEntity("Delete success");
     }
@@ -78,12 +74,6 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
     public ResponseEntity<?> save(Employee employee) {
         return getResponEntity(employeeRepo.save(employee));
 
-    }
-
-    @Override
-    public ResponseEntity<?> findAllByEmailContains(String email,int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        return getResponEntity(employeeRepo.findAllByEmailContains(email,pageable));
     }
 
 }
