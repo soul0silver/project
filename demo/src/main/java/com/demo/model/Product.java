@@ -24,7 +24,6 @@ public class Product {
     private int brand;
     private int ram;
     private int rom;
-    private int version;
     private String rcamera;
     private int battery;
     private double charge;

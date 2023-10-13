@@ -3,6 +3,7 @@ package com.demo.service.implement;
 import com.demo.baserespon.BaseRespon;
 import com.demo.model.DTO.ProductDTO;
 import com.demo.model.Product;
+import com.demo.repository.PCRepo;
 import com.demo.repository.ProductRepo;
 import com.demo.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,14 +15,18 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class ProductServiceImp extends BaseRespon implements ProductService  {
     @Autowired
     ProductRepo productRepo;
+    @Autowired
+    PCRepo pcRepo;
 
     @Override
     public ResponseEntity<?> save(Product p) {
@@ -59,7 +64,7 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     @Override
     public ResponseEntity<?> receipt(List<ProductDTO> list,int store) {
         for(ProductDTO p:list){
-            productRepo.receipt(p.getPid(),p.getQuan(),store);
+            productRepo.receipt(pcRepo.findByColorAndPid(p.getColor(),p.getPid()).getId(),p.getQuan(),store);
         }
         return null;
     }
