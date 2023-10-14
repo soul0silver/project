@@ -1,14 +1,14 @@
 package com.demo.service;
 
 import com.demo.model.DTO.ProductDTO;
-import com.demo.model.Product;
+import com.demo.model.ProductDetails;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface ProductService {
-    ResponseEntity<?> save(Product p);
-    ResponseEntity<?> delete(Product p);
+    ResponseEntity<?> save(ProductDetails p);
+    ResponseEntity<?> delete(ProductDetails p);
     ResponseEntity<?> findByPname(String pname);
     ResponseEntity<?> findByPrice(double price,int page, String sort);
     ResponseEntity<?> findByCid(int cid,int page, String sort);

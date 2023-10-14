@@ -12,10 +12,12 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "product_color")
-public class ProductColor {
+@Entity(name = "price")
+public class Price {
     @Id
     private int id;
     private int pid;
     private int color;
+    private int rom;
+    private double price;
 }

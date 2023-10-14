@@ -1,6 +1,6 @@
 package com.demo.controller;
 
-import com.demo.model.Product;
+import com.demo.model.ProductDetails;
 import com.demo.service.implement.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class ProductController {
 
     }
     @PostMapping("save")
-    ResponseEntity<?> save(@RequestBody Product product){
+    ResponseEntity<?> save(@RequestBody ProductDetails product){
         return service.save(product);
 
     }

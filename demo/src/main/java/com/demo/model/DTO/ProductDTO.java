@@ -12,7 +12,8 @@ import lombok.Setter;
 public class ProductDTO {
     private int pid;
     private String pname;
+    private int rom;
     private int color;
     private int quan;
-
+    private double price;
 }

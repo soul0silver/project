@@ -5,25 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "product")
+@Entity
+@Table(name = "product")
 public class Product {
     @Id
     private int pid;
     private String pname;
-    private String image;
-    private int cid;
-    private String desc;
-    private float price;
     private int brand;
+    private int category;
+    private String image;
+    private String desc;
     private int ram;
-    private int rom;
     private String rcamera;
     private int battery;
     private double charge;
@@ -38,4 +37,16 @@ public class Product {
     private int card;
     private String cpu;
     private String gpu;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "price",
+            joinColumns = {@JoinColumn(name = "pid", referencedColumnName = "pid")},
+            inverseJoinColumns = {@JoinColumn(name = "color", referencedColumnName = "id")}
+    )
+    private Set<Color> colors;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "price",
+            joinColumns = {@JoinColumn(name = "pid", referencedColumnName = "pid")},
+            inverseJoinColumns = {@JoinColumn(name = "rom", referencedColumnName = "id")}
+    )
+    private Set<Rom> roms;
 }
