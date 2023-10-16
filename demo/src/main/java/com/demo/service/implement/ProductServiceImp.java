@@ -2,7 +2,7 @@ package com.demo.service.implement;
 
 import com.demo.baserespon.BaseRespon;
 import com.demo.model.DTO.ProductDTO;
-import com.demo.model.ProductDetails;
+import com.demo.model.Product;
 import com.demo.repository.PCRepo;
 import com.demo.repository.ProductRepo;
 import com.demo.service.ProductService;
@@ -28,14 +28,14 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     PCRepo pcRepo;
 
     @Override
-    public ResponseEntity<?> save(ProductDetails p) {
+    public ResponseEntity<?> save(Product p) {
         productRepo.save(p);
         return getResponEntity(p);
     }
 
     @Override
-    public ResponseEntity<?> delete(ProductDetails p) {
-        ProductDetails product=productRepo.findById(p.getPid()).get();
+    public ResponseEntity<?> delete(Product p) {
+        Product product=productRepo.findById(p.getPid()).get();
 
         productRepo.save(product);
         return getResponEntity(product);
@@ -53,12 +53,7 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
         return getResponEntity(productRepo.findAllByPrice(price,pageable));
     }
 
-    @Override
-    public ResponseEntity<?> findByCid(int cid,int page,String sort) {
-        Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
 
-        return getResponEntity(productRepo.findAllByCid(cid,pageable));
-    }
 
     @Override
     public ResponseEntity<?> receipt(List<ProductDTO> list,int store) {
@@ -72,14 +67,13 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     @Override
     public ResponseEntity<?> getListProductPage(int page, String propSortName) {
         Pageable pageable= PageRequest.of(page,15,Sort.by(Sort.Direction.ASC,propSortName));
-        ObjectMapper mapper=new ObjectMapper();
-        List<ProductDTO> pages=new ArrayList<>();
-        List<Map<String,Object>> list= productRepo.getAll(pageable);
-        for(Map m:list){
-            ProductDTO productDTO=mapper.convertValue(m,ProductDTO.class);
-            pages.add(productDTO);
-        }
-        return getResponEntity(pages);
+
+        return getResponEntity(productRepo.getAll(pageable));
+    }
+
+    @Override
+    public ResponseEntity<?> findById(int id) {
+        return getResponEntity(productRepo.findById(id).get());
     }
 
 }

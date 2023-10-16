@@ -1,9 +1,13 @@
 package com.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -42,11 +46,14 @@ public class Product {
             joinColumns = {@JoinColumn(name = "pid", referencedColumnName = "pid")},
             inverseJoinColumns = {@JoinColumn(name = "color", referencedColumnName = "id")}
     )
+    @JsonManagedReference
     private Set<Color> colors;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "price",
             joinColumns = {@JoinColumn(name = "pid", referencedColumnName = "pid")},
             inverseJoinColumns = {@JoinColumn(name = "rom", referencedColumnName = "id")}
     )
+    @JsonManagedReference
     private Set<Rom> roms;
 }

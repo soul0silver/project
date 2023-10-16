@@ -1,0 +1,37 @@
+package com.demo.model;
+
+import com.demo.model.DTO.ReceiptDetails;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "receipt")
+public class Receipt {
+    @Id
+    private int id;
+    private int eid;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date date_in;
+    private String deliver;
+    private int supplier;
+    private boolean status;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "receipt",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<ReceiptDetails> receiptDetails;
+}
