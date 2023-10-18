@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface ProductService {
-    ResponseEntity<?> save(Product p);
+    ResponseEntity<?> save(Product p,int[] color,int[] roms);
     ResponseEntity<?> delete(Product p);
     ResponseEntity<?> findByPname(String pname);
     ResponseEntity<?> findByPrice(double price,int page, String sort);

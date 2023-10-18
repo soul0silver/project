@@ -19,7 +19,7 @@ public class Rom {
     @Id
     private int id;
     private int size;
-    @ManyToMany(fetch = FetchType.EAGER,mappedBy = "roms",cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "roms",cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Product> products;
 }

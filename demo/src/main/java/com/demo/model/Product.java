@@ -30,12 +30,12 @@ public class Product {
     private String rcamera;
     private int battery;
     private double charge;
-    private int screen;
+    private double screen;
     private int fcamera;
     private String resolution;
-    private double widescreen;
+    private String widescreen;
     private int scanfrequency;
-    private int brightness;
+    private double brightness;
     private String glass;
     private String os;
     private int card;

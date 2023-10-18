@@ -1,10 +1,14 @@
 package com.demo.service.implement;
 
 import com.demo.baserespon.BaseRespon;
+import com.demo.model.Color;
 import com.demo.model.DTO.ProductDTO;
 import com.demo.model.Product;
+import com.demo.model.Rom;
+import com.demo.repository.ColorRepo;
 import com.demo.repository.PCRepo;
 import com.demo.repository.ProductRepo;
+import com.demo.repository.RomRepo;
 import com.demo.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional
@@ -26,11 +28,23 @@ public class ProductServiceImp extends BaseRespon implements ProductService  {
     ProductRepo productRepo;
     @Autowired
     PCRepo pcRepo;
-
+    @Autowired
+    ColorRepo colorRepo;
+    @Autowired
+    RomRepo romRepo;
     @Override
-    public ResponseEntity<?> save(Product p) {
-        productRepo.save(p);
-        return getResponEntity(p);
+    public ResponseEntity<?> save(Product p,int[] color,int[] roms) {
+        Set<Color> colors=new HashSet<>();
+        for (int i:color){
+            colors.add(colorRepo.findById(i).get());
+        }
+        p.setColors(colors);
+        Set<Rom> romSet=new HashSet<>();
+        for (int i:roms){
+            romSet.add(romRepo.findById(i).get());
+        }
+        p.setRoms(romSet);
+        return getResponEntity(productRepo.save(p));
     }
 
     @Override

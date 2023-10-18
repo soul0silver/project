@@ -18,8 +18,8 @@ public class ProductController {
 
     }
     @PostMapping("save")
-    ResponseEntity<?> save(@RequestBody Product product){
-        return service.save(product);
+    ResponseEntity<?> save(@RequestBody Product product,@RequestParam("color")int[] color,@RequestParam("roms")int[] roms){
+        return service.save(product,color,roms);
 
     }
     @GetMapping("listof")
