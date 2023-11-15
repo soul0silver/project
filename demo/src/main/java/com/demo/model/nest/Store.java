@@ -1,22 +1,20 @@
-package com.demo.model;
+package com.demo.model.nest;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Rom {
+@Entity(name = "store")
+public class Store {
     @Id
     private int id;
-    private int size;
-
+    private String name;
 }

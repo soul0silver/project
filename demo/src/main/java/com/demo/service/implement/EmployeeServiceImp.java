@@ -1,9 +1,11 @@
 package com.demo.service.implement;
 
 import com.demo.baserespon.BaseRespon;
+import com.demo.model.DTO.EmpDto;
 import com.demo.model.Employee;
 import com.demo.repository.EmployeeRepo;
 import com.demo.service.EmployeeService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,8 +16,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.stereotype.Service;
 import org.w3c.dom.ls.LSInput;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
@@ -75,5 +79,14 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
         return getResponEntity(employeeRepo.save(employee));
 
     }
-
+    public ResponseEntity<?> findByStore(int store){
+        List<EmpDto> list=new ArrayList<>();
+        ObjectMapper mapper=new ObjectMapper();
+        List<Map<String,Object>> maps=employeeRepo.findAllByStore(store);
+        for (Map m:maps){
+            EmpDto dto=mapper.convertValue(m,EmpDto.class);
+            list.add(dto);
+        }
+        return getResponEntity(list);
+    }
 }

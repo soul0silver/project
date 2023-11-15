@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReceiptRepo extends JpaRepository<Receipt,Integer> {
+public interface ReceiptRepo extends JpaRepository<Receipt,String> {
     @Query(value = "select * from receipt where YEAR(date_in)>= :yf and YEAR(date_in)<=:yl " +
             "and MONTH(date_in)>=:mf and MONTH(date_in)<=:ml " +
             "and DAY(date_in)>=:df and DAY(date_in)<=:dl ",nativeQuery = true)
@@ -22,4 +22,5 @@ public interface ReceiptRepo extends JpaRepository<Receipt,Integer> {
                                 @Param("df")int df,
                                 @Param("dl")int dl,
                                 Pageable pageable);
+    Page<Receipt> findAllByStore(int store,Pageable pageable);
 }

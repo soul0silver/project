@@ -1,5 +1,6 @@
 package com.demo.repository;
 
+import com.demo.model.DTO.EmpDto;
 import com.demo.model.Employee;
 import com.sun.source.doctree.SeeTree;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -47,4 +49,6 @@ public interface EmployeeRepo extends PagingAndSortingRepository<Employee,Intege
             @Param("dl")int dl,
             Pageable pageable
     );
+    @Query(value = "select eid,firstname,lastname from employee where store=:store",nativeQuery = true)
+    List<Map<String,Object>> findAllByStore(@Param("store") int store);
 }

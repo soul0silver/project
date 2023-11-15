@@ -1,7 +1,6 @@
 package com.demo.model.DTO;
 
-import com.demo.model.Price;
-import com.demo.model.Product;
+import com.demo.model.Receipt;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
-   private Product product;
-   private List<Price> prices;
+public class GRNform {
+    private Receipt receipt;
+    private List<StockDTO> list;
+    private int[] quan;
 }

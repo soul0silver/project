@@ -1,6 +1,7 @@
 package com.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,12 +21,13 @@ import java.util.Set;
 @Table(name = "product")
 public class Product {
     @Id
-    private int pid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer pid;
     private String pname;
     private int brand;
     private int category;
     private String image;
-    private String desc;
+    private String description;
     private int ram;
     private String rcamera;
     private int battery;
@@ -33,7 +35,7 @@ public class Product {
     private double screen;
     private int fcamera;
     private String resolution;
-    private String widescreen;
+    private String screenratio;
     private int scanfrequency;
     private double brightness;
     private String glass;
@@ -41,19 +43,6 @@ public class Product {
     private int card;
     private String cpu;
     private String gpu;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "price",
-            joinColumns = {@JoinColumn(name = "pid", referencedColumnName = "pid")},
-            inverseJoinColumns = {@JoinColumn(name = "color", referencedColumnName = "id")}
-    )
-    @JsonManagedReference
-    private Set<Color> colors;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "price",
-            joinColumns = {@JoinColumn(name = "pid", referencedColumnName = "pid")},
-            inverseJoinColumns = {@JoinColumn(name = "rom", referencedColumnName = "id")}
-    )
-    @JsonManagedReference
-    private Set<Rom> roms;
+    private int status;
+    private String supplier;
 }

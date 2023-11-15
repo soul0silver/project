@@ -13,10 +13,10 @@ public class BaseRespon {
     protected ResponseEntity<?> getResponEntity(Object data) {
         return ResponseEntity.ok(data);
     }
-    private MyRespon getRespon(Object data) {
+    private MyRespon getRespon(Object data,int status,String ms) {
         MyRespon myRespon = new MyRespon();
-        myRespon.setStatus(200);
-        myRespon.setMessage("ss");
+        myRespon.setStatus(status);
+        myRespon.setMessage(ms);
         myRespon.setData(data);
         return myRespon;
     }

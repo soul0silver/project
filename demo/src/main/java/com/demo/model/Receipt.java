@@ -18,20 +18,19 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "receipt")
+@Entity(name = "receipt")
+
 public class Receipt {
     @Id
-    private int id;
-    private int eid;
+    private String id;
+    private Date date_create;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date date_in;
-    private String deliver;
-    private int supplier;
+    private int deliver;
+    private String supplier;
+    private int store;
     private boolean status;
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "receipt",cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<ReceiptDetails> receiptDetails;
+
 }

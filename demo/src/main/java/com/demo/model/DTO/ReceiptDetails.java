@@ -12,16 +12,12 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "receipt_details")
+@Entity(name = "receipt_details")
+
 public class ReceiptDetails {
     @Id
     private int id;
-    private int stock_id;
+    private String receiptid;
+    private int stock;
     private int quantity;
-    private double price;
-    private String unit;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "receipt_id",referencedColumnName = "id")
-    private Receipt receipt;
 }

@@ -25,7 +25,6 @@ public class EmployeeController {
 
     @PostMapping("/save")
     ResponseEntity<?> save(@RequestBody Employee employee) {
-
         return employeeServiceImp.save(employee);
     }
 
@@ -70,5 +69,8 @@ public class EmployeeController {
                 dl,
                 page, sort);
     }
-
+    @GetMapping("/")
+    ResponseEntity<?> findByStore(@RequestParam int store){
+        return employeeServiceImp.findByStore(store);
+    }
 }

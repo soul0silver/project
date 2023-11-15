@@ -18,7 +18,4 @@ public class Color {
     @Id
     private int id;
     private String color;
-    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "colors",cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<Product> products;
 }
