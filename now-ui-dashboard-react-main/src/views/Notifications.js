@@ -1,20 +1,4 @@
-/*!
 
-=========================================================
-* Now UI Dashboard React - v1.5.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-dashboard-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 // react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
@@ -81,17 +65,7 @@ function Notifications() {
         content={
           <div className="header text-center">
             <h2 className="title">Notifications</h2>
-            <p className="category">
-              Please Checkout{" "}
-              <a
-                href="https://github.com/creativetimofficial/react-notification-alert"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                The Full Documentation
-              </a>
-              .
-            </p>
+            
           </div>
         }
       />

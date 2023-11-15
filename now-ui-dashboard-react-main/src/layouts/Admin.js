@@ -29,8 +29,8 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
-import Login from "views/Login";
-import { Appcontext } from "context/Appcontext";
+import GRNform from "views/warehouse/GRNform";
+
 
 
 var ps;
@@ -78,7 +78,7 @@ function Admin(props) {
                 />
               );
             })}
-          
+            <Route path='/new-good-recieved-note' element={<GRNform />} exact/>
           
           </Routes>
           <Footer fluid />

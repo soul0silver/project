@@ -16,14 +16,12 @@
 
 */
 import Dashboard from "views/Dashboard.js";
-import Notifications from "views/Notifications.js";
-import Icons from "views/Icons.js";
-import Typography from "views/Typography.js";
-import TableList from "views/TableList.js";
-import Maps from "views/Maps.js";
-import Upgrade from "views/Upgrade.js";
+import TableList from "views/employee/TableList.js"; 
 import UserPage from "views/UserPage.js";
 import Move from "views/Move";
+import Product from "views/product/Product";
+import Supplier from "views/supplier/Supplier";
+import Warehouses from "views/warehouse/Warehouse";
 
 var dashRoutes = [
   {
@@ -37,15 +35,21 @@ var dashRoutes = [
     path: "/products",
     name: "products",
     icon: "fas fa-list",
-    component: <Icons />,
+    component: <Product />,
     layout: "/main",
   },
-  
   {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "fas fa-bell",
-    component: <Notifications />,
+    path: "/supplier",
+    name: "supplier",
+    icon: "fas fa-parachute-box",
+    component: <Supplier />,
+    layout: "/main",
+  },
+  {
+    path: "/warehouse",
+    name: "Warehouse",
+    icon: "now-ui-icons shopping_box",
+    component: <Warehouses />,
     layout: "/main",
   },
   {
@@ -62,13 +66,7 @@ var dashRoutes = [
     component: <TableList />,
     layout: "/main",
   },
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: "design-2_ruler-pencil",
-    component: <Move />,
-    layout: "/main",
-  }
+  
   
 ];
 export default dashRoutes;

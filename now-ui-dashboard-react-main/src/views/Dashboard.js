@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useContext, useEffect } from "react";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
 
@@ -51,6 +51,8 @@ import {
 } from "variables/charts.js";
 
 function Dashboard() {
+
+ 
   return (
     <>
       <PanelHeader
