@@ -73,4 +73,10 @@ public class EmployeeController {
     ResponseEntity<?> findByStore(@RequestParam int store){
         return employeeServiceImp.findByStore(store);
     }
+    @GetMapping("/find")
+    ResponseEntity<?> findById(@RequestParam String username){
+
+        return employeeServiceImp.findByUsername(username);
+    }
+
 }

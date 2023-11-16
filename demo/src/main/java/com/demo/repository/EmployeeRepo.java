@@ -49,6 +49,6 @@ public interface EmployeeRepo extends PagingAndSortingRepository<Employee,Intege
             @Param("dl")int dl,
             Pageable pageable
     );
-    @Query(value = "select eid,firstname,lastname from employee where store=:store",nativeQuery = true)
+    @Query(value = "select eid,firstname,lastname,phone from employee where store=:store",nativeQuery = true)
     List<Map<String,Object>> findAllByStore(@Param("store") int store);
 }

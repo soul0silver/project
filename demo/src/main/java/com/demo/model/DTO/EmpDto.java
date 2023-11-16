@@ -13,4 +13,5 @@ public class EmpDto {
     private int eid;
     private String firstname;
     private String lastname;
+    private String phone;
 }

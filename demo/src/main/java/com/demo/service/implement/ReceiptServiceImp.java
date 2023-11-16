@@ -1,6 +1,7 @@
 package com.demo.service.implement;
 
 import com.demo.baserespon.BaseRespon;
+import com.demo.model.DTO.GRNdto;
 import com.demo.model.DTO.ReceiptDetails;
 import com.demo.model.DTO.StockDTO;
 import com.demo.model.Receipt;
@@ -11,6 +12,7 @@ import com.demo.repository.StockRepo;
 import com.demo.service.ReceiptService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -54,9 +56,16 @@ public class ReceiptServiceImp extends BaseRespon implements ReceiptService {
 
     @Override
     public ResponseEntity<?> getAll(int store, int page, String sort) {
+        ObjectMapper mapper=new ObjectMapper();
         Pageable pageable= PageRequest.of(page,20, Sort.by(Sort.Direction.ASC,sort));
-        if (store==0)
-            return getResponEntity(receiptRepo.findAll(pageable));
+        List<GRNdto> list=new ArrayList<>();
+        if (store==0){
+            Page<Map<String,Object>> maps=receiptRepo.find(pageable);
+            for (Map m:maps){
+                list.add(mapper.convertValue(m,GRNdto.class));
+            }
+            return getResponEntity(list);
+        }
         return getResponEntity(receiptRepo.findAllByStore(store,pageable));
     }
 

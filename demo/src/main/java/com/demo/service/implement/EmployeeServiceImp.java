@@ -4,6 +4,7 @@ import com.demo.baserespon.BaseRespon;
 import com.demo.model.DTO.EmpDto;
 import com.demo.model.Employee;
 import com.demo.repository.EmployeeRepo;
+import com.demo.repository.UserRepo;
 import com.demo.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ import java.util.Map;
 public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
     @Autowired
     EmployeeRepo employeeRepo;
-
+    @Autowired
+    UserRepo userRepo;
     @Override
     public ResponseEntity<?> findAllBy(String firstname, String lastname, String identification, String phone, String email, int aidf,
                                        int aidl,
@@ -88,5 +90,9 @@ public class EmployeeServiceImp extends BaseRespon implements EmployeeService {
             list.add(dto);
         }
         return getResponEntity(list);
+    }
+    public ResponseEntity<?> findByUsername(String username){
+        Employee employee=employeeRepo.findById(userRepo.findUsername(username).getEid()).get();
+        return getResponEntity(employee);
     }
 }

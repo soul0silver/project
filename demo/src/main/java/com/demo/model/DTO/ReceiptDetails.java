@@ -16,7 +16,8 @@ import javax.persistence.*;
 
 public class ReceiptDetails {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String receiptid;
     private int stock;
     private int quantity;
