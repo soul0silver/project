@@ -244,21 +244,14 @@ const NewProduct = ({close,setUp,up}) => {
                     <Row>
                       <Col md='4'>
                         <Col className='pl-3 text-center pb-4'>
-                          {pic ? (
+                          
                             <img
-                              src={pic.preview}
+                              src={pic?.preview}
                               alt=''
                               name='image'
                               width={'280px'}
                             />
-                          ) : (
-                            <img
-                              src={props.image}
-                              alt=''
-                              name='image'
-                              width={280}
-                            />
-                          )}
+                          
                           <br />
                           <label
                             style={{

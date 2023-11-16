@@ -49,12 +49,25 @@ function Product () {
   })
 
   // update list
+  const convertStarus = (e) => {
+    let res;
+    switch (e) {
+      
+      case '1': res = 'In stock';break
+      case '2': res = 'Out stock';break
+      case '3': res = 'Stop business';break
+      case '4': res = 'incomming'; break
+      
+    }
+    return res;
+  }
   function updateList(e) {
+    console.log(e)
     let item = data.map(v => {
       if (v.pid === e.pid) 
        {
         v.pname = e.pname;
-        v.status = e.status;
+        v.sname = convertStarus((e.status));
         v.image = e.image
       }
       return v
@@ -164,7 +177,7 @@ function Product () {
                   <Table responsive>
                     <thead className='text-primary'>
                       <tr>
-                        <th></th>
+                        
                         <th className='text-left'>Image</th>
                         <th className='text-left'>ID</th>
                         <th className='text-left'>Product name</th>
@@ -181,9 +194,7 @@ function Product () {
                             style={{backgroundColor:(prop.status===3)&&'rgb(183,184,188)'}}
                             key={key}
                           >
-                            <td>
-                              <input type='checkbox' />
-                            </td>
+                             
                             <td className='text-left'>
                               <img src={prop.image} width={120} />
                             </td>

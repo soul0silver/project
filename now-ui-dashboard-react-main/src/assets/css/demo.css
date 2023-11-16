@@ -73,3 +73,9 @@
   border-bottom: 2px solid rgb(56, 142, 218);   
   color: rgb(56, 142, 218);
 }
+.resultSearch{
+  cursor: pointer;
+}
+.resultSearch:hover{
+  background-color: #c1c1c1;
+}

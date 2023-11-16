@@ -9,3 +9,12 @@ export async function findEmpByStore (store) {
     return []
   }
 }
+export async function findEmpByName (username) {
+  let res
+  try {
+    res = await instance.get('/employee/find?username='+username)
+    return res.data
+  } catch (err) {
+    return []
+  }
+}
