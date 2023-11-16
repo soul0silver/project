@@ -110,13 +110,13 @@ function Warehouses() {
                                   }}
                                   key={key}
                                 >
-                                  <td>{new Date(prop.date_in).toLocaleString().replace('00:00:00', '')}</td>
+                                  <td>{new Date(prop.date_in).toLocaleDateString()}</td>
                                   <td>{prop.id}</td>
                                   <td>{prop.supplier}</td>
                                   <td>{prop.store}</td>
                                   <td>{prop.deliver}</td>
-                                  <td>{prop.status}</td>
-                                  <td>{ prop.amount}</td>
+                                  <td>{(prop.status===null)?'Waiting':(prop.status===true)?'Received':'Cancel'}</td>
+                                  <td>{prop.amount}</td>
                                   <td className='text-right'>
                                     <i className="fas fa-edit fa-lg" style={{ cursor: 'pointer' }}
                                     ></i>

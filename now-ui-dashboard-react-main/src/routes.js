@@ -18,7 +18,6 @@
 import Dashboard from "views/Dashboard.js";
 import TableList from "views/employee/TableList.js"; 
 import UserPage from "views/UserPage.js";
-import Move from "views/Move";
 import Product from "views/product/Product";
 import Supplier from "views/supplier/Supplier";
 import Warehouses from "views/warehouse/Warehouse";
