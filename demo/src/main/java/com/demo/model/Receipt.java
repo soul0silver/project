@@ -31,6 +31,6 @@ public class Receipt {
     private int deliver;
     private String supplier;
     private int store;
-    private boolean status;
+    private int status;
 
 }

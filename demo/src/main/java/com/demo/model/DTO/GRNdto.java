@@ -21,6 +21,6 @@ public class GRNdto {
     private int deliver;
     private String supplier;
     private int store;
-    private boolean status;
+    private int status;
     private double amount;
 }

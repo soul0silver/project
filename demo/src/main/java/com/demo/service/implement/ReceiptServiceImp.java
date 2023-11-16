@@ -45,7 +45,7 @@ public class ReceiptServiceImp extends BaseRespon implements ReceiptService {
 
     @Override
     public ResponseEntity<?> delete(Receipt receipt) {
-        receipt.setStatus(false);
+        receipt.setStatus(0);
         return getResponEntity(receiptRepo.save(receipt));
     }
 
@@ -108,12 +108,12 @@ public class ReceiptServiceImp extends BaseRespon implements ReceiptService {
     }
 
     @Override
-    public ResponseEntity<?> checked(String receipt_id,Boolean status) {
+    public ResponseEntity<?> checked(String receipt_id,int status) {
         Receipt receipt=receiptRepo.getById(receipt_id);
         receipt.setStatus(status);
         List<ReceiptDetails> list=detailRepo.findAllByReceiptid(receipt_id);
         List<Quantity> quantities=new ArrayList<>();
-        if (status) {
+        if (status==1) {
             for (ReceiptDetails i:list){
                 Quantity q=stockRepo.getById(i.getStock());
                 q.setQuantity(q.getQuantity()+i.getQuantity());

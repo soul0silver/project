@@ -23,7 +23,7 @@ public interface ReceiptService {
     ResponseEntity<?> importGood(List<StockDTO> dtos, int[] quan, Receipt receipt);
     ResponseEntity<?> exportGood(int price,int store,int quan);
     ResponseEntity<?> move(int price,int store1,int quan,int store2);
-    ResponseEntity<?> checked(String receipt_id,Boolean status);
+    ResponseEntity<?> checked(String receipt_id,int status);
 //    ResponseEntity<?> move(int price,int store1,int quan,int store2);
 //    ResponseEntity<?> move(int price,int store1,int quan,int store2);
 
